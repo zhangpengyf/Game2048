@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Game2048</title>
+	<link rel="stylesheet" type="text/css" href="/2048.css">
+</head>
+<body>
+	<div id="container">
+		<div class="div_container">
+			<div></div>
+			<div>128</div>
+			<div></div>
+			<div>2</div>
+			<div></div>
+			<div>32</div>
+			<div></div>
+			<div></div>
+			<div>8</div>
+			<div></div>
+			<div></div>
+			<div>16</div>
+			<div></div>
+			<div></div>
+			<div>64</div>
+			<div></div>
+		</div>
+	</div>
+	
+</body>
+<script src="/jquery-1.12.0.js"></script>
+<script type="text/javascript">
+	$(function () {
+		// console.log($(document).height());
+		$("#container").height($(document).height());
+		function Game2048 () {
+			this.gameGrid = [
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 0]
+			];
+			this.starX = 0;
+			this.endX = 0;
+			this.starY = 0;
+			this.endY = 0;
+			this.score = 0;
+			this.bestScore = 0;
+		}
+
+		Game2048.prototype.init = function () {
+			console.log('Start init...');
+			var _self = this;
+			this.randomNum();
+			this.randomNum();
+			for (var i = 0; i < 3; i++) {
+				for (var j = 0; j < 3; j++) {
+					if (this.gameGrid[i][j] != 0) {
+						var indexNum = i*4 + j;
+						$(".div_container div").eq(indexNum).addClass('Num' + this.gameGrid[i][j]).html(this.gameGrid[i][j]);
+					}
+				}
+			}
+		}
+
+		Game2048.prototype.randomNum = function () {
+			console.log('random number...');
+			var rand = Math.ceil(Math.random() * 4);
+			// console.log(rand);
+			if (rand != 4) {rand = 2};
+			var x = Math.floor(Math.random() * 4);
+			var y = Math.floor(Math.random() * 4);
+			if (this.gameGrid[x][y] == 0) {
+				console.log(rand);
+				this.gameGrid[x][y] = rand;
+			} else{
+				this.randomNum();
+			}
+		}
+
+		Game2048.prototype.touchOrKeypress = function () {
+			console.log('is touch or not ...');
+		}
+
+		var game = new Game2048();
+		game.init();
+
+
+
+	})
+</script>
+</html>
