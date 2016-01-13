@@ -10,20 +10,20 @@
 	<div id="container">
 		<div class="div_container">
 			<div></div>
-			<div>128</div>
-			<div></div>
-			<div>2</div>
-			<div></div>
-			<div>32</div>
 			<div></div>
 			<div></div>
-			<div>8</div>
 			<div></div>
 			<div></div>
-			<div>16</div>
 			<div></div>
 			<div></div>
-			<div>64</div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 			<div></div>
 		</div>
 	</div>
@@ -36,10 +36,10 @@
 		$("#container").height($(document).height());
 		function Game2048 () {
 			this.gameGrid = [
-				[0, 0, 0, 0],
-				[0, 0, 0, 0],
-				[0, 0, 0, 0],
-				[0, 0, 0, 0]
+				[8, 0, 8, 0],
+				[4, 4, 4, 4],
+				[0, 2, 0, 2],
+				[2, 2, 2, 2]
 			];
 			this.starX = 0;
 			this.endX = 0;
@@ -47,15 +47,16 @@
 			this.endY = 0;
 			this.score = 0;
 			this.bestScore = 0;
+			this.slide = false;
 		}
 
-		Game2048.prototype.init = function () {
+		Game2048.prototype.initt = function () {
 			console.log('Start init...');
 			var _self = this;
-			this.randomNum();
-			this.randomNum();
-			for (var i = 0; i < 3; i++) {
-				for (var j = 0; j < 3; j++) {
+			// this.randomNum();
+			// this.randomNum();
+			for (var i = 0; i < 4; i++) {
+				for (var j = 0; j < 4; j++) {
 					if (this.gameGrid[i][j] != 0) {
 						var indexNum = i*4 + j;
 						$(".div_container div").eq(indexNum).addClass('Num' + this.gameGrid[i][j]).html(this.gameGrid[i][j]);
@@ -72,7 +73,8 @@
 			var x = Math.floor(Math.random() * 4);
 			var y = Math.floor(Math.random() * 4);
 			if (this.gameGrid[x][y] == 0) {
-				console.log(rand);
+				console.log("the random num is： " + rand);
+				console.log("the number's position is: " + "gameGrid[" + x + "][" + y + "].");
 				this.gameGrid[x][y] = rand;
 			} else{
 				this.randomNum();
@@ -83,8 +85,37 @@
 			console.log('is touch or not ...');
 		}
 
+		Game2048.prototype.moveUp = function () {
+			console.log("start to move up...");
+			var m = 3;
+			while(m > 0) {
+				for (var i = 0; i < 3; i++) {
+					for (var j = 0; j < 4; j++) {
+						if (this.gameGrid[i][j] == 0 && this.gameGrid[i + 1][j] != 0) {
+							this.gameGrid[i][j] = this.gameGrid[i + 1][j];
+							this.gameGrid[i + 1][j] = 0;
+						}
+						if (this.gameGrid[i][j] != 0 && this.gameGrid[i][j] == this.gameGrid[i + 1][j]) {
+							this.gameGrid[i][j] *= 2;
+							this.gameGrid[i + 1][j] = 0;
+							this.score += this.gameGrid[i][j];
+							this.slide = true;
+						}
+					}
+				}
+				console.log(this.score);
+				m -- ;
+			}
+			// console.log(this.gameGrid[2]);
+			if (this.slide = true) {
+				this.randomNum();
+				this.slide = false;
+			}
+			this.initt();
+		}
+
 		var game = new Game2048();
-		game.init();
+		game.moveUp();
 
 
 
