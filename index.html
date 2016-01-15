@@ -7,24 +7,24 @@
 	<link rel="stylesheet" type="text/css" href="/2048.css">
 </head>
 <body>
-	<div id="container">
-		<div class="div_container">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+	<div class="container">
+		<div class="game_container">
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
+			<div class="game_grid"></div>
 		</div>
 	</div>
 	
@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	$(function () {
 		// console.log($(document).height());
-		$("#container").height($(document).height());
+		$(".container").height($(document).height());
 		function Game2048 () {
 			this.gameGrid = [
 				[8, 0, 8, 0],
@@ -59,7 +59,7 @@
 				for (var j = 0; j < 4; j++) {
 					if (this.gameGrid[i][j] != 0) {
 						var indexNum = i*4 + j;
-						$(".div_container div").eq(indexNum).addClass('Num' + this.gameGrid[i][j]).html(this.gameGrid[i][j]);
+						$(".game_grid").eq(indexNum).addClass('Num' + this.gameGrid[i][j]).html(this.gameGrid[i][j]);
 					}
 				}
 			}
