@@ -3,18 +3,26 @@ body{
     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     color: #776e65;
 }
-.div_container,.title{
-    background: #bbada0;
-	width: 500px;
-	height: 500px;
-	margin: 0 auto;	    
-	border-radius: 6px;
+.container{
+    width: 500px;
+    margin: 0 auto;
 }
-.div_container div{
+.game_container{
+    margin-top: 35px;
+    position: relative;
+    /*padding: 15px;*/
+    cursor: default;
+    -webkit-box-sizing: border-box;
+    background: #bbada0;
+    width: 500px;
+    height: 500px;    
+    border-radius: 6px;
+}
+.game_grid{
     background: rgba(238, 228, 218, 0.73);
     float: left;
     margin: 14.4px 0 0 14.4px;
-    padding: auto 0 0 0;
+    /*padding: auto 0 0 0;*/
     border-radius: 10px;
     height: 107px;
     width: 107px;
@@ -24,4 +32,52 @@ body{
     font-size: 55px;
     /*font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;*/
     font-weight: bold;
+}
+
+@-webkit-keyframes 'numBlink' {
+    from {
+        opacity: 0.8;
+        -webkit-transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        -webkit-transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+
+@-webkit-keyframes 'numAppear' {
+    from {
+        opacity: 0.5;
+        -webkit-transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+
+.Num2 {
+    background: #eee4da;
+    /*box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);*/
+    -webkit-animation-name: numAppear;
+    -webkit-animation-duration: 300ms;
+    -webkit-animation-iteration-count: 1;
+}
+.Num4 {
+    background: #ede0c8;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+    -webkit-animation-name: numBlink;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+}
+.Num8 {
+    color: #f9f6f2;
+    background: #f2b179;
+    -webkit-animation-name: numBlink;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
 }
