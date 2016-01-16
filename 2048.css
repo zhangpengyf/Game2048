@@ -18,7 +18,10 @@ body{
     height: 500px;    
     border-radius: 6px;
 }
-.game_grid{
+/*#game_grid{
+    background: rgba(238, 228, 218, 0.73);
+}*/
+.game_container div{
     background: rgba(238, 228, 218, 0.73);
     float: left;
     margin: 14.4px 0 0 14.4px;
@@ -36,12 +39,12 @@ body{
 
 @-webkit-keyframes 'numBlink' {
     from {
-        opacity: 0.8;
+        opacity: 1;
         -webkit-transform: scale(1);
     }
     50% {
         opacity: 0.9;
-        -webkit-transform: scale(1.1);
+        -webkit-transform: scale(1.08);
     }
     to {
         opacity: 1;
@@ -51,8 +54,8 @@ body{
 
 @-webkit-keyframes 'numAppear' {
     from {
-        opacity: 0.5;
-        -webkit-transform: scale(0.5);
+        opacity: 0.6;
+        -webkit-transform: scale(0.6);
     }
     to {
         opacity: 1;
@@ -60,24 +63,68 @@ body{
     }
 }
 
-.Num2 {
+.game_container .Num2 {
     background: #eee4da;
-    /*box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);*/
-    -webkit-animation-name: numAppear;
-    -webkit-animation-duration: 300ms;
-    -webkit-animation-iteration-count: 1;
 }
-.Num4 {
-    background: #ede0c8;
-    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+.game_container .Num2_Blink {
+    background: #eee4da;
     -webkit-animation-name: numBlink;
-    -webkit-animation-duration: 1s;
+    -webkit-animation-duration: 900ms;
     -webkit-animation-iteration-count: 1;
 }
-.Num8 {
+.game_container .Num2_Appear {
+    background: #eee4da;
+    -webkit-animation-name: numAppear;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-iteration-count: 1;
+}
+.game_container .Num4 {
+    background: #ede0c8;
+}
+.game_container .Num4_Blink {
+    background: #ede0c8;
+    -webkit-animation-name: numBlink;
+    -webkit-animation-duration: 900ms;
+    -webkit-animation-iteration-count: 1;
+}
+.game_container .Num4_Appear {
+    background: #ede0c8;
+    -webkit-animation-name: numAppear;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-iteration-count: 1;
+}
+.game_container .Num8 {
+    color: #f9f6f2;
+    background: #f2b179;
+}
+.game_container .Num8_Blink {
     color: #f9f6f2;
     background: #f2b179;
     -webkit-animation-name: numBlink;
-    -webkit-animation-duration: 1s;
+    -webkit-animation-duration: 900ms;
     -webkit-animation-iteration-count: 1;
+}
+.game_container .Num8_Appear {
+    color: #f9f6f2;
+    background: #f2b179;
+    -webkit-animation-name: numAppear;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-iteration-count: 1;
+}
+.game_container .Num16 {
+    color: #f9f6f2;
+    background: #f59563;
+}
+.game_container .Num32 {
+    color: #f9f6f2;
+    background: #f67c5f;
+}
+.game_container .Num64 {
+    color: #f9f6f2;
+    background: #f65e3b;
+}
+.game_container .Num128 {
+    color: #f9f6f2;
+    background: #edcf72;
+    font-size: 45px;
 }
