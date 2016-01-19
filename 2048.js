@@ -102,31 +102,39 @@ $(function() {
 
 		gameContainer.addEventListener("touchstart", function(event) {
 			event.preventDefault();
-			this.startX = event.touches[0].pageX;
-			this.startY = event.touches[0].pageY;
+			this.startX = event.touches[0].clientX;
+			this.startY = event.touches[0].clientY;
+			// console.log(this.startX+"----");
+			// console.log(this.startY+"----------");
 		})
 
 		gameContainer.addEventListener("touchmove", function(event) {
 			event.preventDefault();
-			this.endX = event.touches[0].pageX;
-			this.endY = event.touches[0].pageY;
 		})
 
 		gameContainer.addEventListener("touchend", function(event) {
 			event.preventDefault();
+			this.endX = event.changedTouches[0].clientX;
+			this.endY = event.changedTouches[0].clientY;
+			// console.log(this.endX+"*****");
+			// console.log(this.endY+"**************");
 			var x = this.endX - this.startX;
 			var y = this.endY - this.startY;
-			if (Math.abs(x) < Math.abs(y)) {
-				if (y > 0) {
-					_self.moveDowm();
-				} else {
-					_self.moveUp();
-				}
-			} else {
-				if (x > 0) {
-					_self.moveRight();
-				} else {
-					_self.moveLeft();
+			// console.log(x);
+			// console.log(y);
+			if ((Math.abs(x) > 3) || (Math.abs(y) > 3)) {
+				if (Math.abs(x) < Math.abs(y)) {
+					if (y > 0) {
+						_self.moveDowm();
+					} else {
+						_self.moveUp();
+					}
+				} else{
+					if (x > 0) {
+						_self.moveRight();
+					} else {
+						_self.moveLeft();
+					}
 				}
 			}
 		})
