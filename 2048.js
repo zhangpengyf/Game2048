@@ -471,6 +471,15 @@ $(function() {
 		if (xCount == 12 && yCount == 12) {
 			alert("Game Over! Please click the \"Restart\" button to restart the Game2048!")
 		}
+
+		for (var i = 0; i < 4; i++) {
+			for (var j = 0; j < 4; j++) {
+				if (this.gameGrid[i][j] == 2048) {
+					alert("You win the Game2048!");
+					break;
+				}
+			}
+		}
 	}
 
 	var game = new Game2048();
