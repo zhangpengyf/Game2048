@@ -61,7 +61,7 @@ $(function() {
 
 	Game2048.prototype.init = function() {
 		console.log('Start init...');
-		var _self = this;
+		// var _self = this;
 		this.randomNum();
 		this.randomNum();
 		for (var i = 0; i < 4; i++) {
@@ -97,8 +97,9 @@ $(function() {
 	Game2048.prototype.touchOrKeypress = function() {
 		console.log('is touch or not ...');
 		var _self = this;
-		var key_code = 0;
+		// var key_code = 0;
 		var gameContainer = document.getElementsByClassName("game_container")[0];
+		// console.log(gameContainer);
 
 		gameContainer.addEventListener("touchstart", function(event) {
 			event.preventDefault();
@@ -141,16 +142,16 @@ $(function() {
 
 		document.addEventListener("keydown", function(event) {
 			switch (event.which) {
-				case 37:
+				case 65:
 					_self.moveLeft();
 					break;
-				case 38:
+				case 87:
 					_self.moveUp();
 					break;
-				case 39:
+				case 68:
 					_self.moveRight();
 					break;
-				case 40:
+				case 83:
 					_self.moveDowm();
 					break;
 				default:
@@ -450,6 +451,15 @@ $(function() {
 	}
 
 	Game2048.prototype.gameOver = function() {
+		for (var i = 0; i < 4; i++) {
+			for (var j = 0; j < 4; j++) {
+				if (this.gameGrid[i][j] == 2048) {
+					alert("You win the Game2048!");
+					break;
+				}
+			}
+		}
+
 		var xCount = 0;
 		var yCount = 0;
 		for (var i = 0; i < 4; i++) {
@@ -470,15 +480,6 @@ $(function() {
 
 		if (xCount == 12 && yCount == 12) {
 			alert("Game Over! Please click the \"Restart\" button to restart the Game2048!")
-		}
-
-		for (var i = 0; i < 4; i++) {
-			for (var j = 0; j < 4; j++) {
-				if (this.gameGrid[i][j] == 2048) {
-					alert("You win the Game2048!");
-					break;
-				}
-			}
 		}
 	}
 
